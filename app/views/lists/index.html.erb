@@ -1,15 +1,53 @@
+<div class="home-banner">
+  <h1>Movies For Any Occassion</h1>
+</div>
 <div class="container">
-  <h1>Lists#index</h1>
-  <p>Find me in app/views/lists/index.html.erb</p>
-  <div class="row">
-    <div class="lists col-8">
+  <div class="add-movie-list position-relative">
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      New List
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add a New Movie List</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render "form", list: @list %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row my-5">
+    <div class="lists col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between align-items-center">
       <% @lists.each do |list| %>
-        <%= link_to list.name, list_path(list) %>
+        <div class="index-card card mr-2 flex-wrap flex-grow-1">
+          <div class="index-card card-body" style="background-image: url('<%= list.image_url %>')">
+            <h1 class="card-title"><%= list.name.capitalize %></h1>
+            <% if list.movies.count > 1 %>
+              <p class="card-text">This list currently has <%= list.movies.count %> movie's</p>
+            <% elsif list.movies.count == 1 %>
+              <p class="card-text">This list currently has <%= list.movies.count %> movie</p>
+            <% else %>
+              <p class="card-text">This list currently has no movies</p>
+            <% end %>
+            <%= link_to "See This List's Movies", list_path(list), class: 'btn btn-light'%>
+          </div>
+        </div>
       <% end %>
     </div>
-    <div class="form col-4">
-      <h1>New List</h1>
-      <%= render "form", list: @list %>
-    </div>
+
   </div>
 </div>

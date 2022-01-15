@@ -1,11 +1,56 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
-<h2><%= @list.name.capitalize %> List</h2>
-<h3>List Movies</h3>
-<% @list.bookmarks.each do |bookmark| %>
-  <p>Movie Title: <%= Movie.find(bookmark.movie_id).title %></p>
-  <p>Remark: <%= bookmark.comment %></p>
-  <%= image_tag Movie.find(bookmark.movie_id).poster_url, alt: "Le Wagon", width: 200 %>
-<% end %>
-<p>add a new bookmark</p>
-<%= link_to 'Add', new_list_bookmark_path(@list)  %>
+<div class="show-banner" style="background-image: url('<%= @list.image_url %>')">
+  <h1>The <%= @list.name.capitalize %> List</h1>
+</div>
+<div class="container">
+  <div class="add-bookmark position-relative">
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      New Bookmark
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add a New Bookmark</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= render "/bookmarks/form",
+                bookmark: @bookmark %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="bookmarks justify-content-center">
+      <div class="d-flex">
+        <% @list.bookmarks.each do |bookmark| %>
+          <div class="show-card card m-2" style="width: 18rem;">
+            <%= image_tag Movie.find(bookmark.movie_id).poster_url, alt: "Le Wagon" %>
+            <div class="show-card card-body">
+              <h5 class="card-title"><%= Movie.find(bookmark.movie_id).title %></h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Rating: <%= Movie.find(bookmark.movie_id).rating %></li>
+              <li class="list-group-item">Remark: <%= bookmark.comment %></li>
+            </ul>
+            <div class="card-body">
+              <%= link_to 'Delete Bookmark', bookmark_path(bookmark), method: :delete, data: { confirm: "Delete?"}, class: 'card-link' %>
+              <%# <a href="#" class="card-link">Delete</a> %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
