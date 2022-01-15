@@ -1,0 +1,9 @@
+<h1>Lists#show</h1>
+<p>Find me in app/views/lists/show.html.erb</p>
+<h2><%= @list.name.capitalize %> List</h2>
+<h3>List Movies</h3>
+<% @list.bookmarks.each do |bookmark| %>
+  <p>Movie Title: <%= Movie.find(bookmark.movie_id).title %></p>
+  <p>Remark: <%= bookmark.comment %></p>
+  <%= image_tag Movie.find(bookmark.movie_id).poster_url, alt: "Le Wagon", width: 200 %>
+<% end %>
