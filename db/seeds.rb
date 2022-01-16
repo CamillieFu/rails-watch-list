@@ -17,13 +17,13 @@ data = JSON.parse(response)
 # poster_url = "https://image.tmdb.org/t/p/original#{data.poster_path}"
 # rating = vote.average
 # poster_url = "https://image.tmdb.org/t/p/original#{poster_path}"
-puts "creating seeds"
-data["results"].each do |movie|
+puts 'creating seeds'
+data['results'].each do |movie|
   Movie.create(
-    title: movie["title"],
-    overview: movie["overview"],
-    poster_url: "https://image.tmdb.org/t/p/original#{movie["poster_path"]}",
-    rating: movie["vote_average"]
+    title: movie['title'],
+    overview: movie['overview'],
+    poster_url: "https://image.tmdb.org/t/p/original#{movie['poster_path']}",
+    rating: movie['vote_average']
   )
 end
-puts "Seeds finished"
+puts 'Seeds finished'

@@ -37,7 +37,7 @@
           <div class="index-card card-body" style="background-image: url('<%= list.image_url %>')">
             <h1 class="card-title"><%= list.name.capitalize %></h1>
             <% if list.movies.count > 1 %>
-              <p class="card-text">This list currently has <%= list.movies.count %> movie's</p>
+              <p class="card-text">This list currently has <%= list.movies.count %> movies</p>
             <% elsif list.movies.count == 1 %>
               <p class="card-text">This list currently has <%= list.movies.count %> movie</p>
             <% else %>
