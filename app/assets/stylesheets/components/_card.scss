@@ -14,9 +14,11 @@
 
 
 .show-card {
+  width: 18rem;
   .card-body {
     background-image: cover;
     background-size: cover;
+    padding-left: 24px;
   }
 }
 

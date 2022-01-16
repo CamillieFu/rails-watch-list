@@ -1,4 +1,5 @@
-<div class="show-banner" style="background-image: url('<%= @list.image_url %>')">
+
+<div class="show-banner " style="background-image: url('<%= @list.image_url %>')">
   <h1>The <%= @list.name.capitalize %> List</h1>
 </div>
 <div class="container">
@@ -32,13 +33,13 @@
   </div>
 
   <div class="row">
-    <div class="bookmarks justify-content-center">
-      <div class="d-flex">
+    <div class="bookmarks d-flex flex-wrap col-lg-8 col-md-12 col-sm-12">
         <% @list.bookmarks.each do |bookmark| %>
-          <div class="show-card card m-2" style="width: 18rem;">
+          <div class="show-card card mr-2 flex-grow-1 mb-2">
             <%= image_tag Movie.find(bookmark.movie_id).poster_url, alt: "Le Wagon" %>
             <div class="show-card card-body">
               <h5 class="card-title"><%= Movie.find(bookmark.movie_id).title %></h5>
+              <p><%= Movie.find(bookmark.movie_id).overview %></p>
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item">Rating: <%= Movie.find(bookmark.movie_id).rating %></li>
@@ -50,7 +51,11 @@
             </div>
           </div>
         <% end %>
-      </div>
     </div>
+
+    <div class="back-button">
+      <%= link_to '', lists_path, class: 'fas fa-arrow-circle-left' %>
+    </div>
+
   </div>
 </div>

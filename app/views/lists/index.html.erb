@@ -30,10 +30,10 @@
     </div>
   </div>
 
-  <div class="row my-5">
-    <div class="lists col-lg-12 col-md-12 col-sm-12 d-flex justify-content-between align-items-center">
+  <div class="row">
+    <div class="lists col-lg-12 col-md-12 col-sm-12 d-flex my-5 flex-wrap">
       <% @lists.each do |list| %>
-        <div class="index-card card mr-2 flex-wrap flex-grow-1">
+        <div class="index-card card mr-2 flex-grow-1 mb-2">
           <div class="index-card card-body" style="background-image: url('<%= list.image_url %>')">
             <h1 class="card-title"><%= list.name.capitalize %></h1>
             <% if list.movies.count > 1 %>
