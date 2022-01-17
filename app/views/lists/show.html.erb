@@ -35,7 +35,7 @@
   <div class="row">
     <div class="bookmarks d-flex my-5 flex-wrap justify-content-center">
         <% @list.bookmarks.each do |bookmark| %>
-          <div class="show-card card mr-2 mb-2 col-lg-5 col-md-5 col-sm-8">
+          <div class="show-card card mr-2 mb-2">
             <%= image_tag Movie.find(bookmark.movie_id).poster_url, alt: "Le Wagon" %>
             <div class="show-card card-body">
               <h5 class="card-title"><%= Movie.find(bookmark.movie_id).title %></h5>
