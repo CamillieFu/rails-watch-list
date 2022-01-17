@@ -19,6 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+gem 'dotenv-rails', groups: [:development, :test]
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'autoprefixer-rails', '10.2.5'
@@ -50,5 +51,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rspec-rails', group: [ :test ]
 gem 'rails-controller-testing', group: [ :test ]
-gem 'rspec-rails', group: [ :test ]
-gem 'rails-controller-testing', group: [ :test ]
+
+# bundle lock --add-platform x86_64-linux

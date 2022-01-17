@@ -8,22 +8,22 @@
 require 'net/http'
 require 'json'
 
-url = 'http://tmdb.lewagon.com/movie/top_rated?api_key=<your_api_key>'
-uri = URI(url)
-response = Net::HTTP.get(uri)
-data = JSON.parse(response)
+# url = 'http://tmdb.lewagon.com/movie/top_rated?api_key=<your_api_key>'
+# uri = URI(url)
+# response = Net::HTTP.get(uri)
+# data = JSON.parse(response)
 # title = data.title
 # overview = data.overview
 # poster_url = "https://image.tmdb.org/t/p/original#{data.poster_path}"
 # rating = vote.average
 # poster_url = "https://image.tmdb.org/t/p/original#{poster_path}"
-puts 'creating seeds'
-data['results'].each do |movie|
-  Movie.create(
-    title: movie['title'],
-    overview: movie['overview'],
-    poster_url: "https://image.tmdb.org/t/p/original#{movie['poster_path']}",
-    rating: movie['vote_average']
-  )
-end
-puts 'Seeds finished'
+# puts 'creating seeds'
+# data['results'].each do |movie|
+#   Movie.create(
+#     title: movie['title'],
+#     overview: movie['overview'],
+#     poster_url: "https://image.tmdb.org/t/p/original#{movie['poster_path']}",
+#     rating: movie['vote_average']
+#   )
+# end
+# puts 'Seeds finished'
