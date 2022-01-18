@@ -1,5 +1,5 @@
 
-<div class="show-banner " style="background-image: url('<%= @list.image_url %>')">
+<div class="show-banner " style="background-image: url('<%= cl_image_path @list.photo.key, crop: :fill %>')">
   <h1>The <%= @list.name.capitalize %> List</h1>
 </div>
 <div class="container">

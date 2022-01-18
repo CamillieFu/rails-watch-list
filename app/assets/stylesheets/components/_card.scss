@@ -7,6 +7,9 @@
     text-align: center;
     color: #eee;
     font-size: 16px;
+      h1, p {
+        text-shadow: 1px 1px 1px rgba($color: black, $alpha: 0.5);
+      }
     }
   }
 }
