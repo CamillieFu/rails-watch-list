@@ -34,7 +34,7 @@
     <div class="lists col-lg-12 col-md-12 col-sm-12 d-flex my-5 flex-wrap">
       <% @lists.each do |list| %>
         <div class="index-card card mr-2 flex-grow-1 mb-2">
-          <div class="index-card card-body" style="background-image: url('<%= list.image_url %>')">
+          <div class="index-card card-body" style="background-image: url('<%= cl_image_path list.photo.key, crop: :fill %>')">
             <h1 class="card-title"><%= list.name.capitalize %></h1>
             <% if list.movies.count > 1 %>
               <p class="card-text">This list currently has <%= list.movies.count %> movies</p>
@@ -48,5 +48,4 @@
         </div>
       <% end %>
     </div>
-
   </div>
