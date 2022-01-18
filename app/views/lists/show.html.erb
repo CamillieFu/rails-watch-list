@@ -32,26 +32,26 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="bookmarks d-flex my-5 flex-wrap justify-content-center">
-        <% @list.bookmarks.each do |bookmark| %>
-          <div class="show-card card mr-2 mb-2">
-            <%= image_tag Movie.find(bookmark.movie_id).poster_url, alt: "Le Wagon" %>
-            <div class="show-card card-body">
-              <h5 class="card-title"><%= Movie.find(bookmark.movie_id).title %></h5>
-              <p><%= Movie.find(bookmark.movie_id).overview %></p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">Rating: <%= Movie.find(bookmark.movie_id).rating %></li>
-              <li class="list-group-item">Remark: <%= bookmark.comment %></li>
-            </ul>
-            <div class="card-body">
-              <%= link_to 'Delete Bookmark', bookmark_path(bookmark), method: :delete, data: { confirm: "Delete?"}, class: 'card-link' %>
-              <%# <a href="#" class="card-link">Delete</a> %>
-            </div>
-          </div>
-        <% end %>
+  <div class="row justify-content-center">
+    <% @list.bookmarks.each do |bookmark| %>
+    <div class="col-10 col-md-6 col-lg-4">
+      <div class="show-card card mr-2 mb-2">
+        <%= image_tag Movie.find(bookmark.movie_id).poster_url, alt: "Movie Poster" %>
+        <div class="show-card card-body">
+          <h5 class="card-title"><%= Movie.find(bookmark.movie_id).title %></h5>
+          <p><%= Movie.find(bookmark.movie_id).overview %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Rating: <%= Movie.find(bookmark.movie_id).rating %></li>
+          <li class="list-group-item">Remark: <%= bookmark.comment %></li>
+        </ul>
+        <div class="card-body">
+          <%= link_to 'Delete Bookmark', bookmark_path(bookmark), method: :delete, data: { confirm: "Delete?"}, class: 'card-link' %>
+          <%# <a href="#" class="card-link">Delete</a> %>
+        </div>
+      </div>
     </div>
+    <% end %>
 
     <div class="back-button">
       <%= link_to '', lists_path, class: 'fas fa-arrow-circle-left' %>
